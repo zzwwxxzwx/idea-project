@@ -1,0 +1,34 @@
+2.1 UDP通信原理
+    UDP协议是一种不可靠的网络协议，它在通信的两端各建立一个 Socket对象，但是这两个 Socket只是发送，接收数据的对象
+    因此对于基于UDP协议的通信双方而言，没有所谓的客户端和服务器的概念
+    Java提供了 DatagramSocket作为基于UDP协议的 Socket
+
+2.2 UDP发送数据
+    发送数据的步骤
+    ①创建发送端的Socket对象(DatagramSocket)
+        DatagramSocket()
+    ②创建数据，并把数据打包
+        DatagramPacket(byte[] buf, int length, InetAddress address, int port)
+    ③调用 DatagramSocket对象的方法发送数据
+        void send(DatagramPacket p)
+    ④关闭发送端
+        void close()
+
+2.3 UDP接收数据
+接收数据的步骤
+    ①创建接收端的 Socket对象(DatagramSocket)
+        DatagramSocket(int port)
+    ②创建一个数据包，用于接收数据
+        DatagramPacket(byte[] buf, int length)
+    ③调用 DatagramSocket对象的方法接收数据
+        void receive(DatagramPacket p)
+    ④解析数据包，并把数据在控制台显示
+        byte getData()
+        int getLength()
+    ⑤关闭接收端
+        void close()
+
+    按下面的要求实现程序
+        UDP发送数据：数据来自于键盘录入，直到输入的数据是886,发送数据结束
+        UDP接收数据：因为接收端不知道发送端什么时候停止发送，故采用死循环接收
+

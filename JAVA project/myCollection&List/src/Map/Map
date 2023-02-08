@@ -1,0 +1,118 @@
+5.1Map集合概述和使用
+    Map集合概述
+        Interface Map<K,V>
+        K:键的类型；V:值的类型
+        将键映射到值的对象；不能包含重复的键；每个健可以映射最多一个值
+        举例：学生的学号和姓名
+            ithelma001
+            林青雪
+            itheima002
+            张曼玉
+            itheima003
+            王祖贤
+    创建Map集合的对象
+        多态的方式
+        具体的实现类 HashMap
+
+5.2 Map集合的基本功能
+            方法名                                 说明
+    V put(K key, V value)                       添加元素
+    V remove(Object key)                        根据键册删除键值对元素
+    void clear()                                移除所有的键值对元素
+    boolean containsKey(Object key)             判断集合是否包含指定的健
+    boolean containsValue(Object value)         判断集合是否包含指定的值
+    boolean isEmpty()                           判断集合是否为空
+    int size()                                  集合的长度，也就是集合中健值对的个数
+
+5.3Map集合的获取功能
+    方法名                                   说明
+    V get(Object key)                   根据健获取值
+    Set<K> keySet()                     获取所有键的集合
+    Collection<V> values()              获取所有信的集合
+    Set<Map.Entry<K,V>> entrySet()      获取所有健值对对象的集合
+
+5.4Map集合的遍历（方式1）
+    我们刚才存储的元素都是成对出现的，所以我们把Map看成是一个大爱对的集台
+    遍历思路
+        把所有的丈夫给集中起来
+        遍历丈夫的集合，获取到每一个丈夫
+        根据丈夫去找对应的妻子
+    转换为Map集合中的操作：
+        获取所有键的集合。用 keySet()方法实现
+        遍历键的集合，获取到海一个键，用增强for实现
+        根据键去找值。用get(Object key)方法实现
+
+5.5 Map集合的遍历（方式2）
+    我们刚才存储的元系都是成对出现的，所以我们把Map看成是一个大友对的集合
+    遍历思路
+        获取所有结婚证的集合
+        遍历结婚证的集合，得到每一个结婚证
+        根据结婚证获取丈夫和妻子
+    转换为Map集合中的操作：
+        获取所有键值对对象的集合
+            Set<Map. Entry<KV>> entrySet():获取所有键值对对象的集合
+        遍历键值对对多象的集合，得到海一个键值对对象
+            用增强for实现。得到每一个Map. Entry
+        根据键值对对象获取键和值
+            用 getKey()得到键
+            用 getValue()得到值
+
+案例： HashMap集合存储学生对象并遍历
+    需求：创建一个 HashMap集合，键是学号( String),值是学生对象( Student).存储三个键值对元素。并追历
+    思路：
+        ①定义学生类
+        ②创建 HashMap集合对象
+        ③创建学生对象
+        ④把学生添加到集合
+        ⑤追历集合
+            方式1：键找值
+            方式2：键值对对象找键和值
+
+案例： HashMap集合存储学生对象并遍历
+    需求：创建一个 HashMap柒合，键是学生对象( Student),值是居住地( String)。存储多个键值对元索，并遍历。
+        要求保证链的唯一性：如果学生对象的成员变量值相同，我们就认为是同一个对象
+    思路：
+        ①定义学生类
+        ②创建 HashMap集合对象
+        ③创建学生对象
+        ④把学生添加到集合
+        ⑤遍历集合
+        ⑥在学生类中重写两个方法
+            hashCode()
+            equals()
+
+案例： ArrayList集合存储 HashMap元素并遍历
+    需求：创建一个 ArrayList集合，存储三个元素，每一个元索都是 HashMap,每一个 HashMapl的键和值都是 String。并遍历
+    思路：
+        ①创建 ArrayList集合
+        ②创建 HashMap集合，并添加键值对元素
+        ③把 HashMap作为元素添加到 ArrayList集合
+        ④遍历 ArrayList集合
+
+案例： HashMap集合存储 ArrayList元素并遍历
+    需求：创建一个 HashMap集合，存储三个键值对元素，每一个键值对元素的键是 String,值是 ArrayList,
+        每一个 ArrayList培的元素是 String,并遍历
+    思路：
+        ①创建 HashMap集合
+        ②创建 ArrayList集合，并添加元素
+        ③把 ArrayList作为元素添加到 HashMap集合
+        ④遍历 HashMap集合
+
+案例：统计字符串中每个字符出现的次数
+    需求：键盘录入一个字符串，要求统计字符串中每个字符串出现的次数。
+    举例：键盘录入“ aababcabcdabcde
+        在控制台输出：“a(5)b(4)c(3)d(2)e(1)
+    分析：
+        ①我们可以把结果分成几个部分来看：a(5),b(4),c(3),d(2),e(1)
+        ②每一个部分可以看成是：字符和字符对应的次数组成
+        ③这样的数据，我们可以通过 HashMap集合来存储，键是字符，值是字符出现的次数
+        注意：键是字符，类型应该是 Character;值是字符出现的次数，类型应该是 Integer
+    思路：
+    ①键盘录入一个字符串
+    ②创建 HashMap集合，键是 Character,值是 Integer
+    ③遍历字符串，得到每一个字符
+    ④拿得到的每一个字符作为键到 HashMap集合中去找对应的值，看其返回值
+        如果返回值是null:说明该字符在 HashMap集合中不存在，就把该字符作为键，1作为值存储
+        如果返回值不是null:说明该字符在 HashMap集合中存在，把该值加,然后重新存储该字符和对应的值
+    ⑤遍历 HashMap集合，得到键和值，按照要求进行拼接
+    ⑥输出结果

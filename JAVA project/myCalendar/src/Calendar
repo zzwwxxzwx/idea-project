@@ -1,0 +1,4 @@
+6.6 Calendar类概述
+    Calendar为某一时刻和一组日历字段之间的转换提供了一些方法，并为操作日历字段提供了一些方法
+    Calendar捉供了一个类方法 getlnstance用于获取 Calendar对象，其日历字段已使用当前日期和时间初始化
+    Calendar rightNow Calendar.getlnstance();

@@ -1,0 +1,32 @@
+4.4 Properties
+    Properties概述：
+        是一个Map体系的集合类
+        Properties可以保存到流中或从流中加载
+        练习： Properties作为Map集合的使用
+    Properties作为集合的特有方法：
+                方法名                                                     说明
+    Object setProperty(String key. String value)    设置集合的健和值，都是 String类型，底层调用Hashtable方法put
+    String getProperty(String key)                  使用此属性列表中指定的键搜索属性
+    Set<String> stringPropertyNames()               从该属性列表中返回一个不可修改的键集，其中键及对应的值是字符串
+    Properties和IO流结合的方法：
+                方法名                                         说明
+        void load(InputStream inStream)                 从输入字节流读取属性列表（键和元素对）
+        void load(Reader reader)                        从输入字符流读取属性列表（键和元素对）
+        void store(OutputStream out                     将此属性列表（键和元素对）写入此 Properties表中，
+        String comments)                              以适合于使用load(InputStream)方法的格式写入输出字节流
+        void store(Writer writer, String comments)      将此属性列表（键和元素对）写入此 Properties表中，以适合
+                                                      使用load( Reader)方法的格式写入输出字符流
+案例：游戏次数
+    需求：请写程序实现猜数字小游戏只能试玩3次，如果还想玩，提示：游戏试玩已结束，想玩请充值()
+    思路：
+        ①写一个游戏类，里面有一个猜数字的小游戏
+        ②写一个测试类，测试类中有main()方法，main方法中按照下面步骤完成
+            A:从文件中读取数据到 Properties集合，用load()方法实现
+                文件已经存在：game.txt
+                里面有一个数据值：count=O
+            B:通过 Properties集合获取到玩游戏的次数
+            C判断次数是否到到3次了
+                如果到了，给出提示：游戏试玩已结束，想玩请充值()
+                如果不到3次：
+                    玩游戏
+                    次数+1，重新写回文件，用Properties的store()方法实现

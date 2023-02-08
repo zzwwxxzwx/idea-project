@@ -1,0 +1,40 @@
+6.1 Collections概述和使用
+    Collections类的概述
+        是针对集合操作的工具类
+    Collections类的常用方法
+        public static< T extends Comparable<? super T>> void sort(ist<T>list):将指定的列表按升序排序
+        public static void reverse(List<?>list):反转指定列表中元索的顺序
+        public static void shufflel(List<?>list):使用默认的随机源随机排列指定的列表
+
+案例： ArrayList存储学生对象并排序
+    需求： ArrayList存储学生对象，使用 Collections对 ArrayList进行排序
+    要求：按照年龄从小到大排序，年龄相司时，按照姓名的字母顺序排序
+    思路：
+        ①定义学生类
+        ②创建 ArrayList柴合对象
+        ③创建学生对象
+        ④把学生添加到集合
+        ⑤使用 Collections对 ArrayList集合排序
+        ⑥遍历集合
+
+案例：模拟斗地主
+    需求：通过程序实现斗地主过程中的洗牌，发牌和看牌
+    思路：
+        创建一个牌盒，也就是定义一个集合对象，用 ArrayLists集合实现
+        往牌盒里面装牌
+        洗牌，也就是把牌打撒，用 CollectionsE的 shuffle0方法实现
+        发牌，也就是遍历集合，给三个玩家发牌
+        看牌，也就是三个玩家分别遍历自己的牌
+
+案例：模拟斗地主升级版
+    需求：通过程序实现斗地主过程中的洗牌，发牌和看牌。要求：对牌进行排序
+    思路：
+        创建 HashMap,键是编号，值是牌
+        创建 ArrayList,存储编号
+        创建花色数组和点数数组
+        从O开始往 HashMap里面存储编号，并存储对应的牌。同时往 ArrayList理面存储编号
+        洗牌(洗的是编号)，用 Collections的 shuffle()方法实现
+        发牌(发的也是编号，为了保证编号是排序的，创够建 TreeSet集合接收)
+        定义方法看牌(遍历 TreeSet集合，获取编号，到 HashMap集合找对应的牌)
+        调用看牌方法
+

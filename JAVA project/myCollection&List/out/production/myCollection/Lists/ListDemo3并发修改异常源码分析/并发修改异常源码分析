@@ -1,0 +1,56 @@
+public interface List<E>{
+    Iterator<E> iterator();
+    boolean add(E e);
+}
+
+public abstract class AbstractList<E>{
+    protect int modCount = 0;
+}
+
+public class ArrayList<E> extends AbstractList<E> implements List<E>{
+
+    public E get(int index) {
+        Objects.checkIndex(index, size);
+        return elementData(index);
+    }//注3：由于不会进行modCount++，所以不会有并发修改异常的问题
+
+    public boolean add(E e) {
+        modCount++;//注2：此处导致modCount++，但expectedModCount没有导致check错误
+        add(e, elementData, size);
+        return true;
+    }
+
+    public Iterator<E> iterator() {
+        return new Itr();
+    }
+
+    private class Itr implements Iterator<E> {
+        int expectedModCount = modCount;
+        /*
+            expectedModCount:实际修改次数
+            modCount:预期修改次数
+        */
+
+        public E next() {
+            checkForComodification();//注1：此处为问题发生位置
+            int i = cursor;
+            if (i >= size)
+                throw new NoSuchElementException();
+            Object[] elementData = ArrayList.this.elementData;
+            if (i >= elementData.length)
+                throw new ConcurrentModificationException();
+            cursor = i + 1;
+            return (E) elementData[lastRet = i];
+        }
+
+        final void checkForComodification() {
+            if (modCount != expectedModCount)//注2：因为add导致modCount和expectedModCount不一致
+                throw new ConcurrentModificationException();
+        }
+    }
+}
+
+解释：
+    List集合是一个单独的参数，lterator迭代器也是一个单独的参数lterator迭代器是依赖集合存在的，
+    lterator迭代器参数具体内容是通过List的方法获取的也就跟复制粘贴一样，
+    原来的内容都通过add增加了内容，所以会报错所以说它是判断你生成迭代器后，原来的List集合的内容有被修改过没

@@ -1,0 +1,3 @@
+打印输出流
+PrintSteamCase
+αβψδεφγ

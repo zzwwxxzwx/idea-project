@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动跳转</title>
+
+    <style>
+        p{
+            text-align: center;
+        }span{
+            color: red;
+                 }
+    </style>
+</head>
+
+
+<body>
+  <p>
+    <span id="time">2</span>秒后自动跳转到首页,若无反应点击此处<span><a href="http://www.baidu.com">链接</a></span>
+  </p>
+
+</body>
+
+<script>
+
+    var time = document.getElementById("time");
+    var second=time.innerText;
+    function showTime() {
+        second--;
+        time.innerText=second;
+        if (second<=0){
+            location.href="http://www.baidu.com";
+        }
+    }
+
+    //设置定时器，每一秒执行一次方法
+    setInterval(showTime,1000);
+
+</script>
+</html>

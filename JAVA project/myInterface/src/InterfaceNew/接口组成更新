@@ -1,0 +1,22 @@
+1.1接口组成更新概述
+    接口的组成
+    常量
+        public static final
+    抽象方法
+        public abstract
+    默认方法(ava8)
+    静态方法(ava8)
+    私有方法(ava9)
+
+1.2接口中默认方法
+    接口中默认方法的定义格式：
+        格式： public default:返回值类型方法名（参数列表）{}
+        范例： public default void show3(){}
+    接口中默认方法的注意事项：
+        默认方法不是抽象方法，所以不强制被重写。但是可以被重写，重写的时候去掉 default关键字
+        public可以省略， default不能省略
+
+1.3接口中静态方法
+    接口中静态方法的定义格式：
+        格式： public static返回值类型方法名（参数列表）{}
+        范例： public static void show(){}

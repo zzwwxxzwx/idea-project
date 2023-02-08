@@ -1,0 +1,48 @@
+1.2集合类体系结构
+    集合：
+    Collection接口(单列)
+        List(可重复):ArrayList       LinkedList
+        Set(不可重复):HashSet        TreeSet
+
+    Map(双列)
+        HashMap
+
+    Collection接口、List、Set、Map为接口
+    其他为实现类
+
+1.3 Collection集合概述和使用
+    Collection集合概述
+        是单例集合的顶层接口，它表示一组对象，这些对象也称为 Collection的元素
+        JDK不提供此接口的任何直接实现，它提供更具体的子接口（如Set和List)实现
+    创建 Collection集合的对象
+        多态的方式
+        具体的实现类 ArrayList
+
+1.4 Collection集合常用方法
+    方法名                                    说明
+    boolean add(E e)                    添加元素
+    boolean remove(Object o)            从集合中移除指定的元素
+    void clearO                         清空集合中的元素
+    boolean contains(Object o)          判断集合中是否存在指定的元素
+    boolean isEmpty()                   判断集合是否为空
+    int size()                          集合的长度，也就是集合中元素的个数
+
+1.5 Collection集合的遍历
+    Iterator:迭代器，集合的专用遍历方式
+        Iterator<E> iterator():返回此集合中元素的迭代器，通过集合的方法得到
+        迭代器是通过集合的 iterator()方法得到的，所以我们说它是依赖于集合而存在的
+    Iterator中的常用方法
+        E next():返回迭代中的下一个元素
+        boolean hasNext():如果迭代具有更多元素，则返回true
+
+1.6 集合的使用步骤
+
+Collection接口
+    案例： Collection集合存储学生对象并遍历
+    需求：创建一个存储学生对象的集合，存储3个学生对象，使用程序实现在控制台遍历该集合
+    思路：
+        ①定义学生类
+        ③创建 Collection集合对象
+        ③创建学生对象
+        ④把学生添加到集合
+        ⑤遍历集合（迭代器方式）

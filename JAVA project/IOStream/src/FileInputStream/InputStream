@@ -1,0 +1,33 @@
+2.6 字节流读数据（一次读一个字节数据）
+    需求：把文件fos.txt中的内容读取出来在控制台输出
+        FilelnputStream:从文件系统中的文件获取输入字节
+        FilelnputStream( String name):通过打开与实际文件的连接来创建一个 FileinputStream,该文件由文件系统中的路径名name命名
+    使用字节输入流读数据的步骤：
+        ①创建字节输入流对象
+        ②调用字节输入流对象的读数据方法
+        ③释放资源
+
+案例1：复制文本文件
+    需求：把“E:\ itcast\窗里窗外.txt”复制到模块目录下的“窗里窗外.txt”
+    分析：
+        ①复制文本文件，其实就把文本文件的内容从一个文件中读取出来（数据源），然后写入到另一个文件中（目的地）
+        ②数据源：
+            C:\desktop\idea project\JAVA project\IOStream\src\FileInputStream\fis_case1.txt
+            读数据-- InputStream-- FileInputStream
+        ③目的地：
+            C:\desktop\idea project\JAVA project\IOStream\src\FileInputStream\fis_case2.txt
+            写数据-- OutputStream-- FileOutputStream
+    思路：
+        ①根据数据源创建字节输入流对象
+        ②根据目的地创建字节输出流对象
+        ③读写数据，复制文本文件（一次读取一个字节，一次写入一个字节）
+        ④释放资源
+
+案例2：复制图片
+    需求：把“C:\desktop\idea project\JAVA project\IOStream\src\FileInputStream\picture1.png”复制到模块目录下的“picture2.png”
+    思路：
+        ①根据数据源创建字节输入流对象
+        ②根据目的地创建字节输出流对象
+        ③读写数据，复制图片（一次读取一个字节数组，一次写入一个字节数组）
+        ④释放资源
+
